@@ -54,21 +54,58 @@ Create a structuring element (kernel) of suitable size.
 Compare the original, opened, and closed images.
 
 ## Program
+```
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
 
+img = np.zeros((400, 600), dtype=np.uint8)
+
+cv2.putText(img, "RATNAPALA P", (55, 210),
+            cv2.FONT_HERSHEY_SIMPLEX, 1.5, 255, 3)
+
+kernel = np.ones((5, 5), np.uint8)
+
+opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+
+closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+
+plt.figure(figsize=(12, 4))
+
+plt.subplot(1, 3, 1)
+plt.imshow(img, cmap="gray")
+plt.title("Original")
+plt.axis("off")
+
+plt.subplot(1, 3, 2)
+plt.imshow(opening, cmap="gray")
+plt.title("Opening")
+plt.axis("off")
+
+plt.subplot(1, 3, 3)
+plt.imshow(closing, cmap="gray")
+plt.title("Closing")
+plt.axis("off")
+
+plt.tight_layout()
+plt.show()
+```
 ## Developed By
 
-**Name:** ____________________________
+**Name:** Ratnapala P
 
-**Register No:** ______________________
+**Register No:** 212225100037
 
 ## Output
 
 ### Original Image
+<img width="347" height="260" alt="image" src="https://github.com/user-attachments/assets/22bb7a2e-e2de-4fd5-a3b3-a7ff0d8b00ac" />
 
 - The input image is displayed.
 - The image serves as the source for morphological processing.
 
 ### Opening Operation
+<img width="365" height="266" alt="image" src="https://github.com/user-attachments/assets/95753fee-588d-42f7-9d34-d4aa75a0dc90" />
 
 - Original image is displayed.
 - Opened image is displayed.
@@ -77,6 +114,7 @@ Compare the original, opened, and closed images.
 - Object boundaries become smoother.
 
 ### Closing Operation
+<img width="362" height="266" alt="image" src="https://github.com/user-attachments/assets/1e324a02-ba76-41a5-bd53-3ad6cd4396d6" />
 
 - Original image is displayed.
 - Closed image is displayed.
